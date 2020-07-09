@@ -1,1 +1,2 @@
-# backend_community_homework
+# yatube
+Социальная сеть блогеров
