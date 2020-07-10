@@ -4,11 +4,13 @@ from .models import Post, Group
 
 
 def index(request):
-    latest = Post.objects.order_by("-pub_date")[:12]
-    return render(request, "index.html", {"posts": latest})
+    limit = 12
+    posts = Post.objects.all()[:limit]
+    return render(request, "index.html", {"posts": posts})
 
 
-def group_posts(request, slug):
+def group_posts(request, slug, ):
+    limit = 12
     group = get_object_or_404(Group, slug=slug)
-    posts = Post.objects.filter(group=group).order_by("-pub_date")[:12]
+    posts = Post.objects.filter(group=group)[:limit]
     return render(request, "group.html", {"group": group, "posts": posts})
