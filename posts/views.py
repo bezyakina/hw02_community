@@ -9,8 +9,10 @@ def index(request):
     return render(request, "index.html", {"posts": posts})
 
 
-def group_posts(request, slug, ):
+def group_posts(
+    request, slug,
+):
     limit = 12
     group = get_object_or_404(Group, slug=slug)
-    posts = Post.objects.filter(group=group)[:limit]
+    posts = group.posts[:limit]
     return render(request, "group.html", {"group": group, "posts": posts})
