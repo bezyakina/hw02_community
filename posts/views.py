@@ -14,5 +14,5 @@ def group_posts(
 ):
     limit = 12
     group = get_object_or_404(Group, slug=slug)
-    posts = group.posts[:limit]
+    posts = group.posts.all()[:limit]
     return render(request, "group.html", {"group": group, "posts": posts})
